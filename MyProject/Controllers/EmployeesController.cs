@@ -30,5 +30,15 @@ namespace MyProject.Controllers
             var employee = vm.FirstOrDefault(x => x.EmployeeId == id);
             return View(employee);
         }
+
+        public IActionResult TwoTables()
+        {
+            var vm = new TwoTablesVM()
+            {
+                Employees = new Employee().GetEmployees(),
+                Departments = new Department().GetDepartments()
+            };
+            return View(vm);
+        }
     }
 }

@@ -1,0 +1,26 @@
+﻿@model CreateEmployeeViewModel
+
+<div class="row">
+    <div class="col-md-5">
+        <form asp-controller="Employees" asp-action="Create" method="post">
+            <div class="mb-3">
+                <label class="form-label" asp-for="Name"></label>
+                <input type="text" class="form-control" asp-for="Name" />
+            </div>
+            <div class="mb-3">
+                <label class="form-label" asp-for="Designation"></label>
+                <input type="text" class="form-control" asp-for="Designation" />
+            </div>
+            <div class="mb-3">
+                <label class="form-label" asp-for="DepartmentId"></label>
+                @*<input type="text" class="form-control" asp-for="DepartmentId" />*@
+                <select class="form-select" asp-for="DepartmentId" asp-items=@(new SelectList(ViewBag.Departments,"Id","DepartmentName"))>
+                    <option>--Select--</option>
+                </select>
+            </div>
+            <div class="mt-2">
+                <input type="submit" class="btn btn-outline-primary" value="Create" />
+            </div>
+        </form>
+    </div>
+</div>

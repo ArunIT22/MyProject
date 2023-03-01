@@ -1,10 +1,13 @@
 ﻿
+using System.ComponentModel.DataAnnotations;
+
 namespace MyProject.Models
 {
     public class Employee
     {
-        public int Id { get; set; }
+        public int Id { get; set; }        
         public string Name { get; set; }
+
         public string Designation { get; set; }
 
         //Table Reference

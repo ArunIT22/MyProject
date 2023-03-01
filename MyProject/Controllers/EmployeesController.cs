@@ -40,5 +40,18 @@ namespace MyProject.Controllers
             };
             return View(vm);
         }
+
+        public IActionResult Create()
+        {
+            var departments = new Department().GetDepartments();
+            ViewBag.Departments = departments;
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Create(CreateEmployeeViewModel employee)
+        {
+            return View();
+        }
     }
 }

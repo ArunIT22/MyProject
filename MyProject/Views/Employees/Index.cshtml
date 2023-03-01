@@ -9,7 +9,7 @@
                     <tr>
                         <th>Employee Id</th>
                         <th>Name</th>
-                        <th>Designation</th>
+                        <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -18,11 +18,28 @@
                         <tr>
                             <td>@item.Id</td>
                             <td>@item.Name</td>
-                            <td>@item.Designation</td>
+                            <td>
+                                <a class="btn btn-primary" asp-controller="Employees" asp-action="Details" asp-route-id="@item.Id">Details</a>
+                            </td>
                         </tr>
                     }
                 </tbody>
             </table>
+
+            @* @(
+            Html
+            .Grid(Model)
+            .Build(columns =>
+            {
+            columns.Add(m => m.Id).Titled("Employee Id");
+            columns.Add(m => m.Name).Titled("Name");
+            })
+            .Using(GridFilterMode.Header)
+            .Empty("No Data Found!")
+            .Filterable()
+            .Sortable()
+            .Pageable()
+            )*@
         </div>
     </div>
 </div>

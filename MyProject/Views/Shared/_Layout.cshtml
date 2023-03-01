@@ -5,8 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - MyProject</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/css/bootstrap.min.css" />
+    <link href="~/css/mvc-grid/mvc-grid.css" rel="stylesheet" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/MyProject.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/MyProject.styles.css" asp-append-version="true" />    
 </head>
 <body>
     <header>
@@ -35,6 +36,11 @@
     <div class="container">
         <main role="main" class="pb-3">
             @RenderBody()
+
+            <script src="~/js/mvc-grid/mvc-grid.js"></script>
+            <script>
+                document.querySelectorAll(".mvc-grid").forEach(element => new MvcGrid(element));
+            </script>
         </main>
     </div>
 

@@ -1,0 +1,19 @@
+﻿@model EmployeeAndDepartment
+
+@if (Model != null)
+{
+    <div class="h2"> Details of @Model.Name</div>
+
+    <ul class="list-group">
+        <li class="list-group-item">Employee Id = @Model.EmployeeId</li>
+        <li class="list-group-item"> Name = @Model.Name</li>
+        <li class="list-group-item">Designation = @Model.Designation</li>
+        <li class="list-group-item">Department = @Model.Department</li>
+    </ul>
+}
+else
+{
+    <div>No Record</div>
+}
+
+<a asp-controller="Employees" asp-action="Index">Back to List</a>

@@ -62,5 +62,10 @@ namespace MyProject.Controllers
             ViewBag.Departments = departments;
             return View(employee);
         }
+
+        public IActionResult Update(int id)
+        {
+            return View();
+        }
     }
 }

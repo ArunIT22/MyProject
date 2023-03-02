@@ -1,29 +1,28 @@
-﻿namespace MyProject.Controllers
+﻿using Microsoft.AspNetCore.Mvc;
+using MyProject.Models;
+using MyProject.Repositories;
+using MyProject.ViewModels;
+
+namespace MyProject.Controllers
 {
     public class EmployeesController : Controller
     {
+        private readonly IEmployeeRepository _employeeRepository;
+
+        public EmployeesController(IEmployeeRepository employeeRepository)
+        {
+            _employeeRepository = employeeRepository;
+        }
+
         public IActionResult Index()
         {
-            var employees = new Employee().GetEmployees();
+            var employees = _employeeRepository.GetEmployees();
             return View(employees);
         }
 
         public IActionResult Details(int id)
         {
-            var employees = new Employee().GetEmployees();
-            var departments = new Department().GetDepartments();
-
-            var vm = from emp in employees
-                     join dep in departments on emp.DepartmentId equals dep.Id
-                     select new EmployeeAndDepartment
-                     {
-                         EmployeeId = emp.Id,
-                         Name = emp.Name,
-                         Designation = emp.Designation,
-                         Department = dep.DepartmentName
-                     };
-
-            var employee = vm.FirstOrDefault(x => x.EmployeeId == id);
+            var employee = _employeeRepository.GetEmployee(id);
             return View(employee);
         }
 
@@ -39,7 +38,7 @@
 
         public IActionResult Create()
         {
-            var departments = new Department().GetDepartments();
+            var departments = _employeeRepository.GetDepartments();
             ViewBag.Departments = departments;
             return View();
         }
@@ -47,7 +46,20 @@
         [HttpPost]
         public IActionResult Create(CreateEmployeeViewModel employee)
         {
-            return View();
+            if(ModelState.IsValid)
+            {
+                Employee emp = new Employee
+                {
+                    Name = employee.Name,
+                    DepartmentId = employee.DepartmentId,
+                    Designation = employee.Designation,
+                };
+                _employeeRepository.Create(emp);
+               // return RedirectToAction("Index");
+            }
+            var departments = _employeeRepository.GetDepartments();
+            ViewBag.Departments = departments;
+            return View(employee);
         }
     }
 }

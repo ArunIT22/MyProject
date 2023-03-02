@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace MyProject.Models
 {
     [Index(propertyNames:"EmailId", IsUnique =true)]
-    public class Employee
+    public class Employee 
     {
         public int Id { get; set; }        
         public string Name { get; set; }

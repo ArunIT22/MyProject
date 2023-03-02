@@ -1,8 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using MyProject.Models;
-using MyProject.ViewModels;
-
-namespace MyProject.Controllers
+﻿namespace MyProject.Controllers
 {
     public class EmployeesController : Controller
     {

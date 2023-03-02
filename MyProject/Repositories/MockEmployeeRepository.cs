@@ -1,7 +1,4 @@
-﻿using MyProject.Models;
-using MyProject.ViewModels;
-
-namespace MyProject.Repositories
+﻿namespace MyProject.Repositories
 {
     public class MockEmployeeRepository : IEmployeeRepository
     {
@@ -62,6 +59,11 @@ namespace MyProject.Repositories
         public Employee Update(Employee employee)
         {
             throw new NotImplementedException();
+        }
+
+        public Employee Get(int id)
+        {
+            return null;
         }
     }
 }

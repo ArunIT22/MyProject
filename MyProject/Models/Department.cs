@@ -1,8 +1,15 @@
-﻿namespace MyProject.Models
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace MyProject.Models
 {
     public class Department
     {
+        [Key]
         public int Id { get; set; }
+
+        [Required]
+        [StringLength(100)]
+        [Column(TypeName = "varchar")]
         public string DepartmentName { get; set; }
 
         public List<Department> GetDepartments()

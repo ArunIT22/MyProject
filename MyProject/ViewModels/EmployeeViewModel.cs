@@ -1,6 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace MyProject.ViewModels
+﻿namespace MyProject.ViewModels
 {
     public class CreateEmployeeViewModel
     {
@@ -13,5 +11,8 @@ namespace MyProject.ViewModels
         [Required]
         [Display(Name="Department")]
         public int DepartmentId { get; set; }
+
+        [Required]
+        public string EmailId { get; set; }
     }
 }

@@ -26,15 +26,15 @@ namespace MyProject.Controllers
             return View(employee);
         }
 
-        public IActionResult TwoTables()
-        {
-            var vm = new TwoTablesVM()
-            {
-                Employees = new Employee().GetEmployees(),
-                Departments = new Department().GetDepartments()
-            };
-            return View(vm);
-        }
+        //public IActionResult TwoTables()
+        //{
+        //    var vm = new TwoTablesVM()
+        //    {
+        //        Employees = new Employee().GetEmployees(),
+        //        Departments = new Department().GetDepartments()
+        //    };
+        //    return View(vm);
+        //}
 
         public IActionResult Create()
         {
@@ -46,16 +46,17 @@ namespace MyProject.Controllers
         [HttpPost]
         public IActionResult Create(CreateEmployeeViewModel employee)
         {
-            if(ModelState.IsValid)
+            if (ModelState.IsValid)
             {
                 Employee emp = new Employee
                 {
                     Name = employee.Name,
                     DepartmentId = employee.DepartmentId,
                     Designation = employee.Designation,
+                    EmailId = employee.EmailId,
                 };
                 _employeeRepository.Create(emp);
-               // return RedirectToAction("Index");
+                 return RedirectToAction("Index");
             }
             var departments = _employeeRepository.GetDepartments();
             ViewBag.Departments = departments;

@@ -1,14 +1,18 @@
-﻿
-using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.EntityFrameworkCore;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MyProject.Models
 {
+    [Index(propertyNames:"EmailId", IsUnique =true)]
     public class Employee
     {
         public int Id { get; set; }        
         public string Name { get; set; }
-
+       
         public string Designation { get; set; }
+
+        [Required]
+        public string EmailId { get; set; }
 
         //Table Reference
         public Department Department { get; set; }

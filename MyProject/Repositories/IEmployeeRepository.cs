@@ -11,6 +11,8 @@ namespace MyProject.Repositories
 
         EmployeeAndDepartment GetEmployee(int id);
 
+        Employee Get(int id);
+
         Employee Create(Employee employee);
 
         Employee Update(Employee employee);

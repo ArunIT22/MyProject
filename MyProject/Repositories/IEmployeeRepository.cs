@@ -9,7 +9,7 @@ namespace MyProject.Repositories
 
         IEnumerable<Department> GetDepartments();
 
-        EmployeeAndDepartment GetEmployee(int id);
+        EmployeeAndDepartmentViewModel GetEmployee(int id);
 
         Employee Get(int id);
 

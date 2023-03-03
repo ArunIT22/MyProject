@@ -32,14 +32,14 @@
             return new Department().GetDepartments();
         }
 
-        public EmployeeAndDepartment GetEmployee(int id)
+        public EmployeeAndDepartmentViewModel GetEmployee(int id)
         {
             var employees = _employees;
             var departments = new Department().GetDepartments();
 
             var vm = from emp in employees
                      join dep in departments on emp.DepartmentId equals dep.Id
-                     select new EmployeeAndDepartment
+                     select new EmployeeAndDepartmentViewModel
                      {
                          EmployeeId = emp.Id,
                          Name = emp.Name,

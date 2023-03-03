@@ -37,14 +37,14 @@
             return _context.Departments.ToList();
         }
 
-        public EmployeeAndDepartment GetEmployee(int id)
+        public EmployeeAndDepartmentViewModel GetEmployee(int id)
         {
             var employee = _context.Employees.ToList();
             var department = _context.Departments.ToList();
 
             var data = (from emp in employee
                         join dep in department on emp.DepartmentId equals dep.Id
-                        select new EmployeeAndDepartment
+                        select new EmployeeAndDepartmentViewModel
                         {
                             Name = emp.Name,
                             Designation = emp.Designation,
